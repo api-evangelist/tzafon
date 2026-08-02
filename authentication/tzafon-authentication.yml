@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: searched
+docs: https://docs.lightcone.ai/guides/authentication
+source: https://docs.lightcone.ai/guides/authentication + https://docs.lightcone.ai/guides/security
+summary:
+  types: [http]
+  schemes: [bearer]
+  oauth2_flows: []
+schemes:
+  - name: bearerAuth
+    type: http
+    scheme: bearer
+    description: >-
+      All API requests require a Bearer token. API keys start with the sk_
+      prefix, are scoped to the organization, and are hashed at rest (shown
+      once at creation). SDKs read the key from the TZAFON_API_KEY environment
+      variable by default; base URL default is https://api.tzafon.ai
+      (override with LIGHTCONE_BASE_URL).
+    key_prefix: sk_
+    env_var: TZAFON_API_KEY
+notes:
+  - Temporary keys are supported for short-lived or scoped access (CI jobs, limited service access).
+  - Keys can be revoked at any time in the dashboard (https://lightcone.ai/dashboard).
+  - 10 failed authentication attempts in 10 minutes will block the client IP.
+  - The CLI also supports browser device-flow sign-in (lightcone login), inheriting org SSO and MFA.
+  - Designed for server-side use; do not embed keys in client-side code.

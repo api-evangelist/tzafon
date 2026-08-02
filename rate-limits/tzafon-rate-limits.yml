@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.lightcone.ai/guides/authentication + https://docs.lightcone.ai/guides/limits-and-behaviors
+rate_limits:
+  - name: concurrent computers
+    scope: organization / plan tier
+    limit: plan-dependent number of simultaneously running computers
+    signal: HTTP 429 "Concurrent limit reached"
+    guidance: delete computers when done, retry with backoff, or upgrade plan
+  - name: failed authentication attempts
+    scope: IP address
+    limit: 10 failed attempts per 10 minutes
+    signal: IP block
+  - name: chat completions output tokens
+    scope: request
+    limit: 4096 max output tokens (server-side ceiling since 2026-06-01)
+  - name: browser tabs
+    scope: browser session
+    limit: 5 tabs maximum
+  - name: desktop file uploads
+    scope: file
+    limit: 512 MB per file (8 MB chunks), landing in /workspace/uploads
+behaviors:
+  - actions on a session are serialized; concurrent requests queue and can hit the per-action timeout (~20s default, timeout_ms overridable)
+  - sessions reaped after inactivity_timeout_seconds unless keepalive is called; max_lifetime_seconds always applies
+limit_count: 5

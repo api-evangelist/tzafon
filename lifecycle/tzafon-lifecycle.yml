@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.lightcone.ai/guides/changelog
+versioning:
+  scheme: model-version pinning + additive API changes
+  docs: https://docs.lightcone.ai/guides/changelog
+  notes: >-
+    Pin fully versioned model IDs in production (tzafon.northstar-cua-fast-1.6,
+    not unversioned aliases); API field additions are optional and additive.
+    APIs marked beta can change with notice via the changelog page.
+deprecation:
+  policy_url: https://docs.lightcone.ai/guides/changelog
+  deprecation_header: true    # deprecated fields receive Deprecation response header
+  sunset_header: true         # RFC 8594 Sunset header announces removal date
+  notes: >-
+    Deprecated fields and endpoints keep working through the sunset date
+    announced in the Deprecation and Sunset response headers, and are listed
+    on the changelog page. Example: timeout_seconds/auto_kill on computer
+    creation deprecated in favor of max_lifetime_seconds/idle_timeout_enabled
+    (removal after 2026-06-06).
+status_page: https://tzafon.instatus.com/
+deprecated_operations: []
+deprecated_fields:
+  - resource: computers.create
+    fields: [timeout_seconds, auto_kill]
+    replacements: [max_lifetime_seconds, idle_timeout_enabled]
+    sunset: '2026-06-06'

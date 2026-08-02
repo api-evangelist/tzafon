@@ -1,0 +1,35 @@
+generated: '2026-07-21'
+method: derived
+source: https://docs.lightcone.ai/api (Stainless-generated API reference; no public OpenAPI download found)
+entities:
+  - name: Computer
+    description: A cloud browser or desktop VM session (kind browser|desktop); live or persistent
+    id_field: id
+    key_fields: [kind, status, environment_id, persistent, max_lifetime_seconds, inactivity_timeout_seconds, endpoints]
+  - name: Environment
+    description: A saved persistent-session snapshot a computer or task can be restored from
+    id_field: environment_id
+  - name: Task
+    description: An autonomous Northstar agent run (POST /agent/tasks), streamed as SSE events
+    id_field: task_id
+    key_fields: [instruction, kind, model, computer_id, environment_id, thread_id, idempotency_key, max_steps, max_duration_seconds]
+  - name: Response
+    description: A stored model response from the OpenAI-compatible Responses API (/v1/responses)
+    id_field: response_id
+    key_fields: [model, previous_response_id, store]
+  - name: Model
+    description: A Northstar model available to the key (GET /models)
+    id_field: model_id
+  - name: Tab
+    description: A browser tab within a browser computer session (max 5)
+    id_field: tab_id
+relationships:
+  - {from: Task, to: Computer, kind: belongs_to, via: computer_id}
+  - {from: Task, to: Environment, kind: belongs_to, via: environment_id}
+  - {from: Task, to: Task, kind: belongs_to, via: thread_id, note: tasks grouped into a chat thread}
+  - {from: Computer, to: Environment, kind: belongs_to, via: environment_id, note: computer created/restored from a saved snapshot}
+  - {from: Tab, to: Computer, kind: belongs_to, via: "computer id path parameter"}
+  - {from: Computer, to: Tab, kind: has_many, via: "/computers/{id}/tabs"}
+  - {from: Response, to: Response, kind: belongs_to, via: previous_response_id, note: multi-turn conversation chain}
+  - {from: Task, to: Model, kind: belongs_to, via: model}
+  - {from: Response, to: Model, kind: belongs_to, via: model}

@@ -1,0 +1,93 @@
+# Lightcone
+
+> Lightcone by Tzafon is the computer-use API: cloud browsers and desktops operated by AI. Describe work in plain language and Northstar — a vision-language model trained to operate computers — does it. Automate apps that have no API.
+
+## Getting started
+
+- [Introduction](https://docs.lightcone.ai/): Overview of Lightcone and navigation to all documentation
+- [Quickstart](https://docs.lightcone.ai/guides/quickstart): Run your first task in under 5 minutes
+- [Authentication](https://docs.lightcone.ai/guides/authentication): Get your API key and configure the SDK
+- [How Lightcone Works](https://docs.lightcone.ai/guides/how-lightcone-works): Architecture, the mental model (environment/computer/task/turn), models, vision vs DOM, glossary
+- [Pricing](https://docs.lightcone.ai/guides/pricing): Token and compute pricing with worked examples
+- [CLI](https://docs.lightcone.ai/guides/cli): Run tasks and drive computers from the terminal; wire up coding agents via MCP
+
+## Using Northstar
+
+- [Run a Task](https://docs.lightcone.ai/guides/run-a-task): Walkthrough — stream, poll, and steer autonomous tasks
+- [Tasks Reference](https://docs.lightcone.ai/guides/tasks): Every event type, all configuration options, multi-turn sessions, research tasks, artifacts
+- [Responses API](https://docs.lightcone.ai/guides/responses-api): OpenAI-compatible computer-use interface for building CUA loops
+- [Computer-Use Loop](https://docs.lightcone.ai/guides/cua-protocol): Complete working loop with coordinate denormalization
+- [Coordinates](https://docs.lightcone.ai/guides/coordinates): Northstar's 0-999 normalized grid and how to convert to pixels
+- [Chat Completions](https://docs.lightcone.ai/guides/chat-completions): OpenAI-compatible text generation; also Anthropic Messages compatibility
+
+## Environments
+
+- [Computers](https://docs.lightcone.ai/guides/computers): Browser and desktop sessions — lifecycle, actions, timeouts, persistence, batch, CDP access
+- [Operate a Computer](https://docs.lightcone.ai/guides/operate-a-computer): End-to-end direct-control walkthrough
+- [Shell Commands](https://docs.lightcone.ai/guides/shell-commands): Run shell commands with streaming or synchronous output
+- [Browser Tabs](https://docs.lightcone.ai/guides/browser-tabs): Multi-tab workflows — open, switch, close, and target tabs
+- [Lightcone OS](https://docs.lightcone.ai/guides/lightcone-os): The desktop runtime environments run on
+- [Run Northstar Locally on a Mac](https://docs.lightcone.ai/guides/local-mac-agent): Fully on-device computer-use agent using MacControlKit + the Northstar MLX 4-bit model, no API key or network required
+
+## Production
+
+- [Logins and Sessions](https://docs.lightcone.ai/guides/logins-and-sessions): Persistent sessions, human-in-the-loop login handoff, credentials, 2FA
+- [Running in Production](https://docs.lightcone.ai/guides/production): Model pinning, idempotency, stream resumption, retries, warm sessions
+- [Observability](https://docs.lightcone.ai/guides/observability): Live view, screencast recording to MP4, event traces, replay
+- [Continuous Learning](https://docs.lightcone.ai/guides/continuous-learning): (Preview) Deploy a model that learns from your corrections — corrective turns captured automatically from your traffic, nightly eval-gated self-distillation checkpoints, metered in compute units (fwd 1 / bwd 2 per 1k tok), one-call rollback
+- [Security and Data Handling](https://docs.lightcone.ai/guides/security): Isolation, API keys, screenshot URL lifetimes, credential handling
+- [Errors](https://docs.lightcone.ai/guides/errors): RFC 7807 problem+json, status codes, task-level errors, retry guidance
+- [Limits and Behaviors](https://docs.lightcone.ai/guides/limits-and-behaviors): Platform behaviors and constraints, with workarounds
+
+## Guides
+
+- [Best Practices](https://docs.lightcone.ai/guides/best-practices): Patterns for reliable, efficient, cost-effective automation
+- [Migrating to Lightcone](https://docs.lightcone.ai/guides/migrating-to-lightcone): Move from Selenium, Puppeteer, or Playwright
+- [Lightcone vs RPA](https://docs.lightcone.ai/guides/lightcone-vs-rpa): How screen-native AI compares to selector-based RPA tools
+- [Lightcone vs DIY Computer Use](https://docs.lightcone.ai/guides/lightcone-vs-diy-computer-use): Model + managed environments vs building on raw computer-use APIs
+- [Troubleshooting](https://docs.lightcone.ai/guides/troubleshooting): Common issues and solutions
+- [Changelog](https://docs.lightcone.ai/guides/changelog): API changes and deprecation policy
+
+## Cookbook
+
+- [Wrap a Legacy App in a REST API](https://docs.lightcone.ai/cookbook/wrap-a-legacy-app-in-an-api): FastAPI + state machine + warm VM, fail-closed verification
+- [Warm Sessions and Self-Healing](https://docs.lightcone.ai/cookbook/warm-sessions-and-self-healing): Adopt-or-create, liveness probing, escalating recovery
+- [Verified Structured Extraction](https://docs.lightcone.ai/cookbook/verified-structured-extraction): Read data off any screen with JSON schemas and confidence checks
+
+## Tutorials
+
+- [Automate a Form with AI](https://docs.lightcone.ai/tutorials/automate-a-form-with-ai): Use an AI agent to fill and submit web forms
+- [Build a Price Tracker](https://docs.lightcone.ai/tutorials/build-a-price-tracker): Scrape prices, detect changes, use persistent sessions
+- [Scrape Behind a Login](https://docs.lightcone.ai/tutorials/scrape-behind-a-login): Log in, save the session, and scrape authenticated pages
+
+## Use cases
+
+- [Software Testing](https://docs.lightcone.ai/use-cases/software-testing): Northstar tests your app like a real user
+- [Legacy Software Automation](https://docs.lightcone.ai/use-cases/legacy-software): Operate enterprise software through the GUI — no API required
+- [Cross-Application Workflows](https://docs.lightcone.ai/use-cases/cross-app-workflows): Move data between apps that don't talk to each other
+- [Docs Validation](https://docs.lightcone.ai/use-cases/docs-validation): Follow documentation like a new user and report where it breaks
+
+## Integrations
+
+- [Integrations Overview](https://docs.lightcone.ai/integrations/overview): Connect Lightcone to agent frameworks and orchestration platforms
+- [LangChain](https://docs.lightcone.ai/integrations/langchain): Use Lightcone as a tool in LangChain agents
+- [CrewAI](https://docs.lightcone.ai/integrations/crewai): Add Lightcone browser automation as a CrewAI tool
+- [Browser-Use](https://docs.lightcone.ai/integrations/browser-use): Connect Browser-Use agents to Lightcone cloud browsers
+- [OpenClaw](https://docs.lightcone.ai/integrations/openclaw): Use Lightcone computers from OpenClaw agents
+- [Vercel AI SDK](https://docs.lightcone.ai/integrations/vercel-ai): Use Lightcone as a tool in Vercel AI SDK agents
+- [MCP Server](https://docs.lightcone.ai/integrations/mcp): Model Context Protocol server for Lightcone actions
+- [Playwright](https://docs.lightcone.ai/integrations/playwright): Connect Playwright to Lightcone sessions via CDP
+- [Kernel](https://docs.lightcone.ai/integrations/kernel): Run Northstar CUA loops on Kernel browsers
+- [Mastra](https://docs.lightcone.ai/integrations/mastra): Use Lightcone actions as tools in Mastra AI agents
+- [API Reference](https://docs.lightcone.ai/api): Full API reference for all endpoints
+
+## SDKs
+
+- Python: `pip install tzafon` — [PyPI](https://pypi.org/project/tzafon/)
+- TypeScript: `npm install @tzafon/lightcone` — [npm](https://www.npmjs.com/package/@tzafon/lightcone)
+
+## Links
+
+- [Dashboard](https://lightcone.ai/dashboard)
+- [API Status](https://tzafon.instatus.com/)
+- [GitHub](https://github.com/tzafon)

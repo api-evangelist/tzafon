@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.lightcone.ai/guides/production + https://docs.lightcone.ai/guides/errors + https://docs.lightcone.ai/guides/authentication + https://docs.lightcone.ai/guides/limits-and-behaviors
+authentication:
+  style: bearer API key (sk_ prefix), TZAFON_API_KEY env var
+  artifact: authentication/tzafon-authentication.yml
+idempotency:
+  supported: true
+  mechanism: idempotency_key body parameter on POST /agent/tasks (task start)
+  docs: https://docs.lightcone.ai/guides/production
+  behavior: >-
+    A retry with the same idempotency_key returns the same task with
+    reused: true instead of starting a new one. Derive the key from your own
+    job ID so retries at any layer (queue, HTTP client, SDK) deduplicate to
+    one task.
+pagination:
+  documented: false
+  notes: List endpoints (GET /computers) return full arrays; no cursor/offset pagination is documented.
+request_tracing:
+  documented: false
+versioning:
+  style: model-version pinning + additive optional fields; deprecated fields signaled via Deprecation/Sunset headers
+  artifact: lifecycle/tzafon-lifecycle.yml
+error_envelope:
+  format: RFC 7807 application/problem+json (type, title, status, detail, instance)
+  artifact: errors/tzafon-problem-types.yml
+rate_limit_signaling:
+  status: 429 on plan concurrent-computer limit, with retry guidance
+  artifact: rate-limits/tzafon-rate-limits.yml
+retries:
+  sdk_default: SDKs retry automatically on connection errors and 5xx (default 2 retries)
+  guidance: exponential backoff on 429/5xx; branch failed task events on retryable flag
+streaming:
+  style: Server-Sent Events for task streams; newline-delimited JSON for /exec
+  resumption: >-
+    Task SSE streams are resumable via the standard Last-Event-ID header or
+    ?from=<seq>; a replay_gap event signals evicted events (re-sync from
+    retrieve_status). Streams remain available ~10 minutes after a task ends.
+coordinates:
+  convention: model returns 0-999 normalized coordinates (since April 8, 2026); denormalize to pixels client-side. Direct computer actions take screenshot-pixel coordinates.
+timeouts:
+  per_action: ~20 seconds server-side default; per-action timeout_ms accepted
+  task_ceilings: max_steps and max_duration_seconds should be set on every task
+compatibility:
+  - OpenAI drop-in compatibility on /chat/completions and /v1/responses (use OpenAI SDK with a Lightcone base_url)
+  - Anthropic Messages compatibility (Anthropic-style error bodies)

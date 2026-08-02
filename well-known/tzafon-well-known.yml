@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+note: >-
+  Probe of the /.well-known/ discovery surface across Tzafon/Lightcone hosts.
+  No well-known documents were found (absence recorded honestly; tzafon.ai
+  returns 308 redirects to www.tzafon.ai which then 404). api.tzafon.ai is
+  the API host; api.lightcone.ai does not resolve.
+hosts:
+  - host: https://tzafon.ai
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://lightcone.ai
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://docs.lightcone.ai
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+related_discovery:
+  - {path: "https://docs.lightcone.ai/llms.txt", status: 200, file: ../llms/tzafon-llms.txt}

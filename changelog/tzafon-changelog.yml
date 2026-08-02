@@ -1,0 +1,55 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.lightcone.ai/guides/changelog
+product_changelog: https://www.tzafon.ai/changelog
+scheme: dated entries, newest first; breaking changes and deprecations announced before taking effect
+current:
+  recommended_model: tzafon.northstar-cua-fast-1.6
+  python_sdk: 2.44.1 (tzafon on PyPI)
+  typescript_sdk: 0.19.1 (@tzafon/lightcone on npm)
+entries:
+  - date: '2026-07'
+    highlights:
+      - Run Northstar locally on a Mac — Northstar CUA Fast 1.6 as MLX 4-bit quantization (Apache 2.0) paired with the MacControlKit Swift package; no API key or network required
+      - Continuous learning (preview) — corrective turns captured from traffic, nightly eval-gated self-distillation checkpoints; new tzafon deploy, client.corrections.create, client.learning.* and X-Lightcone-Training header
+      - Documentation overhaul — new CLI, Observability, Logins and sessions, Production, Security, Errors, Limits guides + cookbook
+    breaking: false
+  - date: '2026-06-26'
+    highlights:
+      - Price drop — northstar-cua-fast input $0.50/M (was $1.00), output $1.50/M (was $5.00)
+    breaking: false
+  - date: '2026-06-08'
+    highlights:
+      - Tasks API additions (all optional/additive) — computer_id + on_missing_computer, context, thread_id, start_url, save_session, keep_alive, max_duration_seconds, metadata, idempotency_key
+      - Computer responses include environment_id; task SSE streams resumable via Last-Event-ID
+    breaking: false
+  - date: '2026-06-01'
+    highlights:
+      - Chat Completions server-side maximum of 4096 output tokens
+      - Computer lifetime fields renamed — timeout_seconds/auto_kill deprecated for max_lifetime_seconds/idle_timeout_enabled (Deprecation + Sunset headers)
+    breaking: false
+  - date: '2026-04-27'
+    highlights:
+      - tzafon.northstar-medium-alpha available via GET /v1/models; usage grouped by model family
+    breaking: false
+  - date: '2026-04-13'
+    highlights:
+      - TypeScript SDK 0.13.0; OpenAPI/Swagger reference matches v2 API shapes (regenerate custom clients)
+    breaking: false
+  - date: '2026-04-08'
+    highlights:
+      - 'Breaking: coordinates no longer pre-scaled — API returns raw 0-999 model space (Python SDK 2.35.0, TypeScript SDK 0.8)'
+      - New model tzafon.northstar-cua-fast-1.2
+    breaking: true
+  - date: '2026-03-12'
+    highlights:
+      - Responses API — multi-turn via previous_response_id, persistent retrievable responses, computer use with OpenAI drop-in compatibility
+    breaking: false
+  - date: '2026-03-09'
+    highlights:
+      - Faster session resume from compressed VM snapshots
+    breaking: false
+deprecation_policy: >-
+  Deprecated fields and endpoints keep working through the sunset date
+  announced in Deprecation and Sunset response headers and listed on the
+  changelog page; beta APIs can change with notice.

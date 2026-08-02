@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.lightcone.ai/guides/cli
+name: lightcone
+description: >-
+  The lightcone CLI runs Northstar tasks with live streaming, controls browser
+  and desktop computers with pipeable Unix-style commands, and wires coding
+  agents (Claude Code, Cursor, Codex) to Lightcone via MCP. Single static
+  binary for macOS (Intel/Apple Silicon), Linux (x86_64/aarch64), and Windows.
+install:
+  - method: install script
+    command: curl -fsSL https://lightcone.ai/install | sh
+  - method: self-update
+    command: lightcone update
+auth:
+  - lightcone login       # browser device-flow sign-in (inherits org SSO/MFA)
+  - lightcone whoami
+  - lightcone logout
+  - export TZAFON_API_KEY=sk_...   # API-key alternative
+commands:
+  tasks:
+    - "lightcone run \"<instruction>\" [--kind desktop|browser] [--max-steps n] [--model m] [--start-url url] [--system-prompt text] [--json]"
+    - lightcone            # bare command opens the interactive TUI (Enter injects a message mid-run; shows a Follow URL)
+    - lightcone goal       # experimental long-running durable goals
+    - lightcone quickstart # interactive auth + agent setup
+  computers:
+    - lightcone computers create [--kind desktop|browser] [--persistent]
+    - lightcone computers list [--json]
+    - lightcone computers destroy <id>
+  actions:
+    - lightcone screenshot <id>     # prints signed image URL
+    - lightcone click <id> <x> <y>
+    - lightcone double-click <id> <x> <y>
+    - lightcone right-click <id> <x> <y>   # desktop only
+    - lightcone type <id> "<text>"
+    - lightcone hotkey <id> <keys...>
+    - lightcone scroll <id> <dx> <dy> [x] [y]
+    - lightcone navigate <id> <url>        # browser only
+    - lightcone html <id>
+    - lightcone shell <id> "<command>"     # mirrors remote stdout/stderr/exit code
+    - lightcone batch <id> --json '[...]'
+  agents:
+    - lightcone configure-agents    # machine-wide MCP config pointing at @tzafon/lightcone-mcp
+    - lightcone configure-project   # project-scoped .mcp.json / .cursor/mcp.json
+scripting: commands with --json emit JSON/NDJSON for jq and shell pipelines
+package: packages/tzafon-packages.yml

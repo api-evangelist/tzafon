@@ -1,0 +1,42 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.lightcone.ai/integrations/mcp
+status: published
+server:
+  name: lightcone
+  vendor: Tzafon
+  package: "@tzafon/lightcone-mcp"
+  version: 0.14.0
+  registry_url: https://www.npmjs.com/package/@tzafon/lightcone-mcp
+  docs: https://docs.lightcone.ai/integrations/mcp
+  transports:
+    - stdio        # TZAFON_API_KEY=sk_... npx @tzafon/lightcone-mcp
+    - http         # npx @tzafon/lightcone-mcp --transport http --port 3001
+  auth:
+    type: apiKey
+    env: TZAFON_API_KEY
+  install:
+    command: npx
+    args: ["@tzafon/lightcone-mcp"]
+    env:
+      TZAFON_API_KEY: sk_your_api_key_here
+  cli_setup: lightcone configure-agents   # writes MCP config for Claude Code, Cursor, Codex
+tools:
+  - name: create_session
+    description: Create a browser or desktop session
+  - name: navigate
+    description: Navigate to a URL
+  - name: click
+    description: Click at coordinates
+  - name: type
+    description: Type text
+  - name: screenshot
+    description: Capture the current viewport
+  - name: scroll
+    description: Scroll the page
+  - name: execute_action
+    description: Execute any Lightcone action
+  - name: get_html
+    description: Get the page HTML
+  - name: terminate_session
+    description: End the session

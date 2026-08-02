@@ -1,0 +1,67 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.lightcone.ai/guides/errors
+format: rfc9457   # docs cite RFC 7807 (obsoleted by RFC 9457); Content-Type application/problem+json
+envelope:
+  content_type: application/problem+json
+  fields: [type, title, status, detail, instance]
+problems:
+  - status: 400
+    title: Validation error
+    detail: e.g. passing start_url on a desktop task, or an out-of-range parameter
+    remediation: Fix the request; do not retry as-is
+  - status: 401
+    title: Missing or invalid API key
+    remediation: Check TZAFON_API_KEY; regenerate the key if needed
+  - status: 402
+    title: Payment Required (out of credits)
+    remediation: Top up at https://lightcone.ai/dashboard/usage; alert, do not retry
+    notes: >-
+      A lapsed subscription returns a fixed non-problem+json body
+      {"error": "light_subscription_lapsed", "status": "read_only"} and puts
+      the org in read-only mode; branch on `error`, not the problem+json type.
+  - status: 403
+    title: Key is valid but not allowed to do this
+    remediation: Check the key's scope and your plan
+  - status: 404
+    title: Resource does not exist, or belongs to another organization
+    remediation: Verify the ID and that you are using the right org's key
+  - status: 429
+    title: Concurrent computer limit for your plan reached
+    remediation: Wait for a session to finish, or retry with backoff
+  - status: 500
+    title: Internal error
+    remediation: Retry with backoff; contact support if persistent
+  - status: 502
+    title: Bad gateway
+    remediation: Retry with backoff
+  - status: 503
+    title: Upstream busy
+    remediation: Retry with backoff
+non_problem_json_surfaces:
+  - surface: /computers/{id}/exec streaming
+    behavior: >-
+      Always responds HTTP 200 and streams application/x-ndjson lines of
+      {"type": "stdout"|"stderr"|"exit"|"error", ...}; exit code -1 means
+      timeout or abnormal termination — check the exit line, not HTTP status.
+  - surface: OpenAI-compatible endpoints (/chat/completions, /v1/responses)
+    behavior: Return OpenAI-style error bodies
+  - surface: Anthropic-compatible endpoints
+    behavior: 'Return {"type": "error", "error": {"type": "...", "message": "..."}}'
+  - surface: Computer actions (click, navigate, screenshot, ...)
+    behavior: >-
+      Return HTTP 200 even when the action fails; the ActionResult carries
+      status and error_message — always check ActionResult.status.
+task_error_events:
+  - event: config_error
+    meaning: Task could not start with the given configuration (model_not_found, invalid_kind, api_error)
+  - event: error
+    meaning: Non-terminal problem; the task is still running and may recover
+  - event: failed
+    meaning: Terminal failure; carries status, error_code (session_expired, exec_failed, invalid_token), and a retryable flag
+  - event: max_steps
+    meaning: Task hit its step limit before finishing
+  - event: max_duration
+    meaning: Task hit its time limit before finishing
+  - event: cancelled
+    meaning: Task was cancelled

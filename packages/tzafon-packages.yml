@@ -1,0 +1,60 @@
+generated: '2026-07-21'
+method: searched
+source: https://registry.npmjs.org + https://pypi.org + https://docs.lightcone.ai/llms.txt
+packages:
+  - language: python
+    registry: pypi
+    name: tzafon
+    version: 2.44.1
+    url: https://pypi.org/project/tzafon/
+    install: pip install tzafon
+    description: The official Python library for the Lightcone API
+    repository: https://github.com/tzafon/lightcone-python
+    official: true
+  - language: typescript
+    registry: npm
+    name: "@tzafon/lightcone"
+    version: 0.19.1
+    url: https://www.npmjs.com/package/@tzafon/lightcone
+    install: npm install @tzafon/lightcone
+    description: The official TypeScript library for the Lightcone API
+    official: true
+  - language: typescript
+    registry: npm
+    name: "@tzafon/computer"
+    version: 1.21.2
+    url: https://www.npmjs.com/package/@tzafon/computer
+    install: npm install @tzafon/computer
+    description: The official TypeScript library for the Computer API
+    official: true
+  - language: typescript
+    registry: npm
+    name: tzafon
+    version: 1.14.0
+    url: https://www.npmjs.com/package/tzafon
+    install: npm install tzafon
+    description: The official TypeScript library for the Computer API (legacy package name)
+    official: true
+  - language: typescript
+    registry: npm
+    name: "@tzafon/lightcone-mcp"
+    version: 0.14.0
+    url: https://www.npmjs.com/package/@tzafon/lightcone-mcp
+    install: npx @tzafon/lightcone-mcp
+    description: The official MCP Server for the Lightcone API
+    official: true
+  - language: typescript
+    registry: npm
+    name: "@tzafon/openclaw-lightcone"
+    version: 0.1.2
+    url: https://www.npmjs.com/package/@tzafon/openclaw-lightcone
+    install: npm install @tzafon/openclaw-lightcone
+    description: OpenClaw cloud browser automation plugin via Lightcone (Tzafon)
+    official: true
+  - language: shell
+    registry: vendor
+    name: lightcone-cli
+    url: https://docs.lightcone.ai/guides/cli
+    install: curl -fsSL https://lightcone.ai/install | sh
+    description: Single static binary CLI for macOS (Intel/Apple Silicon), Linux (x86_64/aarch64), and Windows
+    official: true
