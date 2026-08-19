@@ -31,7 +31,7 @@ x-backed-by:
 - hv-capital
 x-tier: enriched
 x-tier-reason: enrichment-pipeline-local-v1
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-21'
 x-enrichment:
@@ -117,7 +117,7 @@ common:
   url: conformance/tzafon-conformance.yml
 - type: DataModel
   url: data-model/tzafon-data-model.yml
-- type: Code Samples
+- type: CodeExamples
   url: https://github.com/tzafon/lightcone/tree/main/examples
 - type: GitHubOrganization
   url: https://github.com/tzafon
