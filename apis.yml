@@ -88,6 +88,8 @@ apis:
     url: https://docs.lightcone.ai/api
   overlays: []
 common:
+- type: Website
+  url: https://www.lightcone.ai/
 - type: DomainSecurity
   url: security/tzafon-domain-security.yml
 - type: DeveloperPortal
