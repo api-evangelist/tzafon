@@ -88,6 +88,8 @@ apis:
     url: https://docs.lightcone.ai/api
   overlays: []
 common:
+- type: Plans
+  url: plans/tzafon-plans-pricing.yml
 - type: Website
   url: https://www.lightcone.ai/
 - type: DomainSecurity
