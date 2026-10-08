@@ -70,3 +70,77 @@ plans:
   unit: GiB-hour
 rate_limit_statements:
 - Granularity. Per-second billing, minimum 0.125 cores per container
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units:
+  - compute
+  - data
+  - token
+  plans:
+  - name: tzafon.northstar-cua-fast-1.6 (input)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - token
+    periods:
+    - other
+  - name: tzafon.northstar-cua-fast-1.6 (output)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - token
+    periods:
+    - other
+  - name: tzafon.northstar-cua-fast (input)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - token
+    periods:
+    - other
+  - name: tzafon.northstar-cua-fast (output)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - token
+    periods:
+    - other
+  - name: tzafon.sm-1 (input)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - token
+    periods:
+    - other
+  - name: tzafon.sm-1 (output)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - token
+    periods:
+    - other
+  - name: CPU
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: Memory
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
