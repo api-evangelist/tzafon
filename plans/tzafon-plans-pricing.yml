@@ -1,0 +1,72 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://docs.lightcone.ai/guides/pricing
+sources:
+- https://docs.lightcone.ai/guides/pricing
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: per-call
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+published: true
+note: Usage-based token and compute pricing; also notes ~1,974 additional input tokens overhead per computer_use
+  request and volume discounts via contacting support. No setup fees or monthly minimums.
+plan_count: 8
+currency: USD
+plans:
+- name: tzafon.northstar-cua-fast-1.6 (input)
+  price_text: $0.50/M tokens
+  price: 0.5
+  currency: USD
+  period: per-use
+  unit: per million input tokens
+- name: tzafon.northstar-cua-fast-1.6 (output)
+  price_text: $1.50/M tokens
+  price: 1.5
+  currency: USD
+  period: per-use
+  unit: per million output tokens
+- name: tzafon.northstar-cua-fast (input)
+  price_text: $0.50/M tokens
+  price: 0.5
+  currency: USD
+  period: per-use
+  unit: per million input tokens
+- name: tzafon.northstar-cua-fast (output)
+  price_text: $1.50/M tokens
+  price: 1.5
+  currency: USD
+  period: per-use
+  unit: per million output tokens
+- name: tzafon.sm-1 (input)
+  price_text: $0.20/M tokens
+  price: 0.2
+  currency: USD
+  period: per-use
+  unit: per million input tokens
+- name: tzafon.sm-1 (output)
+  price_text: $0.30/M tokens
+  price: 0.3
+  currency: USD
+  period: per-use
+  unit: per million output tokens
+- name: CPU
+  price_text: $0.38 / core-hour
+  price: 0.38
+  currency: USD
+  period: per-use
+  unit: core-hour
+- name: Memory
+  price_text: $0.095 / GiB-hour
+  price: 0.095
+  currency: USD
+  period: per-use
+  unit: GiB-hour
+rate_limit_statements:
+- Granularity. Per-second billing, minimum 0.125 cores per container
